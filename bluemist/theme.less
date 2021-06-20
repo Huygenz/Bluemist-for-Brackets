@@ -1,0 +1,240 @@
+/* 
+TODO:
+
+customize the styles within an inline code editor by adding: .inline-widget .CodeMirror to the CSS selector
+
+matching tags in HTML:
+.CodeMirror-matchingtag
+
+matches for the "Find" command:
+.CodeMirror-searching (all matches), 
+.CodeMirror-searching.searching-current-match (current match)
+
+matches for the "highlightMatches" auto word highlighting:
+.cm-matchhighlight
+
+code folding collapsed-text placeholders:
+.CodeMirror-foldmarker (border, fill, and fg icon/text color)
+
+Referencefile: https://github.com/adobe/brackets/blob/master/src/extensions/default/DarkTheme/main.less
+
+Code-Colors inspired by https://github.com/apezel/brackets-easy-dark/blob/master/theme.css
+*/
+
+@comments:   rgb(255, 94, 181);                                 
+@background: #394551;                                           
+@foreground: #dddddd;                                           
+@marker:     #d44a26;                                           
+@border:     #777777;                                           
+@grey:       #424242; 
+
+@color-1:    #FF3b6b;                                           
+@color-2:    #4da4c0;                                           
+@color-3:    #fff176;                                           
+@color-4:    #31be6A;                                           
+@color-5:    #ba68c9;                                           
+@color-6:    #fecF96;                                           
+@color-7:    #AEDA7C;                                           
+
+
+.CodeMirror, .CodeMirror-scroll {                                   
+    background-color: @background;
+    color: @foreground
+}
+
+.CodeMirror-gutters,
+.CodeMirror-linenumber {                                        /*Zahlenreihe*/
+    background: darken(@background, 3%);                        /*Zahlenreihe Hintergrund*/
+    border-right: 1px solid @border;                            /*Zahlenreihe Rand rechts*/
+    color: white                                                /*Zahlenreihe Zahlen*/
+}
+
+.CodeMirror-selected {                       	                /*Texteditor Auswahl*/
+    background: @marker!important;
+    opacity: 0.5!important
+}
+
+.CodeMirror-cursor {                                            /*Cursor*/
+    border-left: 2px solid white!important;
+}
+
+.CodeMirror-overwrite .CodeMirror-cursor {                      /*Cursor Überschreiben-Modus*/
+    border-left: 0px!important;
+    border-bottom: 3px solid red!important;
+}
+
+.CodeMirror-activeline .CodeMirror-linenumber {                 /*Aktive Zeile Hervorhebung in der Nummernleiste*/
+    background: @foreground!important;
+    color: @background;
+    font-weight: 900
+}
+
+.CodeMirror-activeline-background {                             /*Aktive Zeile Hervorhebung*/
+    background: darken(@background, 3%)!important;
+    border-style: none
+}
+
+.CodeMirror-foldgutter-open:after,                              /*Code-Folding Dreiecke*/
+.CodeMirror-foldgutter-folded:after, 
+.CodeMirror-foldgutter-open:after, 
+.CodeMirror-foldgutter-open:after 
+.CodeMirror-activeline 
+.CodeMirror.over-gutter {
+    color: @foreground!important
+}
+
+.inline-widget .CodeMirror {                                    /*Inline Editor  GEHT NICHT*/
+    background-color: darken(@background, 5%)!important
+}
+
+.quick-view-highlight {                                         /*Inline Popup Texthover*/
+    background: @marker!important;
+    background-color: @marker!important
+}
+
+span.CodeMirror-matchingbracket {                               /*Passende Klammer*/
+    color: @background!important;
+    background:lime!important;
+    font-weight: 900!important;
+    backface-visibility: visible;
+}
+
+span.CodeMirror-nonmatchingbracket {                            /*Fehlende Klammer*/
+    color: lime!important;
+    backface-visibility: visible;
+    background: red!important;
+    font-weight: 900!important;
+}
+
+/*                                                              Selektoren ohne Funktion??
+.CodeMirror-line::selection,
+.CodeMirror-line > span::selection,
+.CodeMirror-line > span > span::selection {                     
+    background: deeppink!important;
+}
+
+.CodeMirror-line::-moz-selection,
+.CodeMirror-line > span::-moz-selection,
+.CodeMirror-line > span > span::-moz-selection {                
+    background: deeppink!important;
+}
+
+.CodeMirror-guttermarker {                                      
+    color: deeppink!important;
+}
+
+.CodeMirror-guttermarker-subtle {                               
+    color: deeppink!important;
+}
+*/
+
+/* 
+========================================== 
+Codefarben 
+========================================== 
+*/
+span.cm-atom {
+    color: @foreground;
+}
+
+span.cm-string {
+    color: @color-7;
+}
+
+span.cm-string-2 {
+    color: @color-7;
+}
+
+span.cm-hr {
+    color: @color-3;
+}
+
+span.cm-number {
+    color: @color-5;
+}
+
+span.cm-attribute {
+    color: @foreground;
+}
+
+span.cm-plus {
+    color: @color-2;
+}
+
+span.cm-def {
+    color: @color-6;
+}
+
+span.cm-property {
+    color: @color-2;
+}
+
+span.cm-operator {
+    color: @color-1;
+}
+
+span.cm-meta {
+    color: @color-2;
+}
+
+span.cm-bracket {
+    color: @color-2;
+}
+
+span.cm-variable {
+    color: @color-6;
+}
+
+span.cm-variable-2 {
+    color: @color-6;
+}
+
+span.cm-variable-3 {
+    color: @color-6;
+}
+
+span.cm-comment {
+    color: @comments;
+}
+
+span.cm-error {
+    color: red;
+}
+
+span.cm-minus {
+    color: blue;
+}
+
+span.cm-header {
+    color: @color-1;
+}
+
+span.cm-link {
+    color: red;
+    text-decoration: none;
+}
+
+span.cm-rangeinfo {
+    color: blue;
+}
+
+span.cm-keyword {
+    color: @color-1;
+    font-weight: 900;
+}
+
+span.cm-qualifier {
+    color: @color-4;
+}
+
+span.cm-builtin {
+    color: @color-4;
+}
+
+span.cm-tag {
+    color: @foreground;
+}
+
+span.cm-quote {
+    color: @color-1;
+}

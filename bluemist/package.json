@@ -1,0 +1,15 @@
+{
+    "name": "huygenz.bluemist",
+    "title": "Bluemist - A Brackets Theme",
+    "description": "A tranquil bluegrey theme for Brackets.",
+    "homepage": "https://github.com/Huygenz/brackets-bluemist",
+    "version": "1.0.0",
+    "author": "Huygenz <phluxx@gmail.com> (http://github.com)",
+    "license": "MIT",
+    "theme": {
+        "file": "theme.less",
+        "dark": true,
+        "addModeClass": true
+    },
+    "keywords": ["theme"]
+}
