@@ -5,13 +5,9 @@ Bluemist: A brackets theme
 
 https://github.com/Huygenz/brackets-bluemist
 
-v1.1:
-- Translated & expanded comments
-- Tidied up the code
-- removed !importants
-- added some selectors
-- added some color variables
-- fixed a problem where matching html-tags would get unreadable (bad color choice)
+v1.1.1:
+- added individual background color for gutter row (to get a better styling together with Bluemist UI)
+- added transparency to @searchall
 
 TODO:
 - customize the styles within inline code editors by adding: .inline-widget .CodeMirror to the CSS selector
@@ -33,7 +29,8 @@ All the colors here:
 @comments:      rgb(255, 94, 181);      //comments                               
 @background:    #394551;                //background
 @backdark:      #333d48;                //background, a bit darker
-@foreground:    #dddddd;                //foreground                                           
+@foreground:    #dddddd;                //foreground 
+@darker:        #2c363f;                //darker bluemist (e.g. gutter background)
 @marker:        #d44a26;                //marked text                           
 @border:        #777777;                //subtle grey border (e.g. right border of the gutter)                           
 @grey:          #424242;                //grey
@@ -41,8 +38,8 @@ All the colors here:
 @cursor2:       #ff0404;                //cursor overwrite mode
 @matching:      #00ff00;                //matching brackets
 @nonmatching:   #ff0000;                //nonmatching brackets
-@searchall:     #8e8e2f;                //search highlitch all hits
-@searchcurrent: #cefd07;                //search highlitch current hit
+@searchall:     rgba(255, 255, 0, 0.38);//search highlitch all hits
+@searchcurrent: #edfd07;                //search highlitch current hit
 @color-1:       #FF3b6b;                //lightpink                           
 @color-2:       #4da4c0;                //lightblue                           
 @color-3:       #fff176;                //lightyellow                           
@@ -66,7 +63,7 @@ Editor CSS here:
 
 .CodeMirror-gutters,
 .CodeMirror-linenumber {                                        /*gutter*/
-    background: darken(@background, 3%);                        /*gutter background*/
+    background: @darker;                                        /*gutter background*/
     border-right: 1px solid @border;                            /*gutter foreground*/
     color: @foreground                                          /*gutter numbers*/
 }
@@ -131,21 +128,21 @@ span.CodeMirror-nonmatchingbracket {                            /*nonmatching br
 }
 
 .CodeMirror-searching.searching-current-match {                 /*search highlight current hit*/
-    background-color: @searchcurrent
+    background-color: @searchcurrent;
 }
 
 .CodeMirror-foldmarker {                                        /*code-folding collapsed text placeholders*/
-    border-color: @foreground;
+    border: 0px;
     color: @background;
     background-color: @foreground
 }
 
 .image-view,
-.not-editor {                                                   /*image view, from template css*/
+.not-editor {                                                   /*image view background*/
     background-color: @background
 }
 
-.view-pane .image-view {                                        /*image view, from template css*/
+.view-pane .image-view {                                        /*image view foreground*/
     color: @foreground
 }
 
