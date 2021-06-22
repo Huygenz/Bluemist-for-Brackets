@@ -1,138 +1,160 @@
 /* 
+========================================== 
+Bluemist: A brackets theme
+========================================== 
+
+https://github.com/Huygenz/brackets-bluemist
+
+v1.1:
+- Translated & expanded comments
+- Tidied up the code
+- removed !importants
+- added some selectors
+- added some color variables
+- fixed a problem where matching html-tags would get unreadable (bad color choice)
+
 TODO:
+- customize the styles within inline code editors by adding: .inline-widget .CodeMirror to the CSS selector
 
-customize the styles within an inline code editor by adding: .inline-widget .CodeMirror to the CSS selector
-
-matching tags in HTML:
-.CodeMirror-matchingtag
-
-matches for the "Find" command:
-.CodeMirror-searching (all matches), 
-.CodeMirror-searching.searching-current-match (current match)
-
-matches for the "highlightMatches" auto word highlighting:
-.cm-matchhighlight
-
-code folding collapsed-text placeholders:
-.CodeMirror-foldmarker (border, fill, and fg icon/text color)
+Unnecessary CSS (we don't need it, it's nice without):
+.cm-matchhighlight { -matching selection- }
 
 Referencefile: https://github.com/adobe/brackets/blob/master/src/extensions/default/DarkTheme/main.less
 
 Code-Colors inspired by https://github.com/apezel/brackets-easy-dark/blob/master/theme.css
 */
 
-@comments:   rgb(255, 94, 181);                                 
-@background: #394551;                                           
-@foreground: #dddddd;                                           
-@marker:     #d44a26;                                           
-@border:     #777777;                                           
-@grey:       #424242; 
+/* 
+========================================== 
+All the colors here:
+========================================== 
+*/
 
-@color-1:    #FF3b6b;                                           
-@color-2:    #4da4c0;                                           
-@color-3:    #fff176;                                           
-@color-4:    #31be6A;                                           
-@color-5:    #ba68c9;                                           
-@color-6:    #fecF96;                                           
-@color-7:    #AEDA7C;                                           
+@comments:      rgb(255, 94, 181);      //comments                               
+@background:    #394551;                //background
+@backdark:      #333d48;                //background, a bit darker
+@foreground:    #dddddd;                //foreground                                           
+@marker:        #d44a26;                //marked text                           
+@border:        #777777;                //subtle grey border (e.g. right border of the gutter)                           
+@grey:          #424242;                //grey
+@cursor1:       #ffffff;                //cursor normal mode
+@cursor2:       #ff0404;                //cursor overwrite mode
+@matching:      #00ff00;                //matching brackets
+@nonmatching:   #ff0000;                //nonmatching brackets
+@searchall:     #8e8e2f;                //search highlitch all hits
+@searchcurrent: #cefd07;                //search highlitch current hit
+@color-1:       #FF3b6b;                //lightpink                           
+@color-2:       #4da4c0;                //lightblue                           
+@color-3:       #fff176;                //lightyellow                           
+@color-4:       #31be6A;                //green                                           
+@color-5:       #ba68c9;                //lightviolet                           
+@color-6:       #fecF96;                //lightorange                           
+@color-7:       #AEDA7C;                //lightgreen
+@color-8:       #fa0000;                //red
+@color-9:       #0303ff;                //blue
 
+/* 
+========================================== 
+Editor CSS here:
+========================================== 
+*/
 
-.CodeMirror, .CodeMirror-scroll {                                   
+.CodeMirror, .CodeMirror-scroll {                               /*basic editor colors*/                               
     background-color: @background;
     color: @foreground
 }
 
 .CodeMirror-gutters,
-.CodeMirror-linenumber {                                        /*Zahlenreihe*/
-    background: darken(@background, 3%);                        /*Zahlenreihe Hintergrund*/
-    border-right: 1px solid @border;                            /*Zahlenreihe Rand rechts*/
-    color: white                                                /*Zahlenreihe Zahlen*/
+.CodeMirror-linenumber {                                        /*gutter*/
+    background: darken(@background, 3%);                        /*gutter background*/
+    border-right: 1px solid @border;                            /*gutter foreground*/
+    color: @foreground                                          /*gutter numbers*/
 }
 
-.CodeMirror-selected {                       	                /*Texteditor Auswahl*/
-    background: @marker!important;
-    opacity: 0.5!important
+.CodeMirror-selected {                       	                /*selected text*/
+    background: @marker;
+    opacity: 0.5
 }
 
-.CodeMirror-cursor {                                            /*Cursor*/
-    border-left: 2px solid white!important;
+.CodeMirror-cursor {                                            /*cursor1 normal mode*/
+    border-left: 2px solid @cursor1;
 }
 
-.CodeMirror-overwrite .CodeMirror-cursor {                      /*Cursor Überschreiben-Modus*/
-    border-left: 0px!important;
-    border-bottom: 3px solid red!important;
+.CodeMirror-overwrite .CodeMirror-cursor {                      /*cursor2 overwrite mode*/
+    border-left: 0px;
+    border-bottom: 3px solid @cursor2;
 }
 
-.CodeMirror-activeline .CodeMirror-linenumber {                 /*Aktive Zeile Hervorhebung in der Nummernleiste*/
-    background: @foreground!important;
+.CodeMirror-activeline .CodeMirror-linenumber {                 /*active line in gutter*/
+    background: @foreground;
     color: @background;
     font-weight: 900
 }
 
-.CodeMirror-activeline-background {                             /*Aktive Zeile Hervorhebung*/
-    background: darken(@background, 3%)!important;
+.CodeMirror-activeline-background {                             /*active line in editor*/
+    background: darken(@background, 3%);
     border-style: none
 }
 
-.CodeMirror-foldgutter-open:after,                              /*Code-Folding Dreiecke*/
-.CodeMirror-foldgutter-folded:after, 
+.CodeMirror-foldgutter-open:after,                              /*unfolded code triangle*/
 .CodeMirror-foldgutter-open:after, 
 .CodeMirror-foldgutter-open:after 
 .CodeMirror-activeline 
 .CodeMirror.over-gutter {
-    color: @foreground!important
+    color: @border
 }
 
-.inline-widget .CodeMirror {                                    /*Inline Editor  GEHT NICHT*/
-    background-color: darken(@background, 5%)!important
+.CodeMirror-foldgutter-folded:after {                           /*folded code triangle*/
+    color: @comments
 }
 
-.quick-view-highlight {                                         /*Inline Popup Texthover*/
-    background: @marker!important;
-    background-color: @marker!important
+.quick-view-highlight {                                         /*inline popup texthover*/
+    background-color: @marker
 }
 
-span.CodeMirror-matchingbracket {                               /*Passende Klammer*/
-    color: @background!important;
-    background:lime!important;
-    font-weight: 900!important;
-    backface-visibility: visible;
+span.CodeMirror-matchingbracket {                               /*matching brackets*/
+    color: @background;
+    background-color:@matching
 }
 
-span.CodeMirror-nonmatchingbracket {                            /*Fehlende Klammer*/
-    color: lime!important;
-    backface-visibility: visible;
-    background: red!important;
-    font-weight: 900!important;
+span.CodeMirror-nonmatchingbracket {                            /*nonmatching brackets*/
+    color: @matching;
+    background: @nonmatching
 }
 
-/*                                                              Selektoren ohne Funktion??
-.CodeMirror-line::selection,
-.CodeMirror-line > span::selection,
-.CodeMirror-line > span > span::selection {                     
-    background: deeppink!important;
+.CodeMirror-matchingtag {                                       /*html matching tags*/
+    background-color: darken(@background, 10%)
 }
 
-.CodeMirror-line::-moz-selection,
-.CodeMirror-line > span::-moz-selection,
-.CodeMirror-line > span > span::-moz-selection {                
-    background: deeppink!important;
+.CodeMirror-searching {                                         /*search highlicht all hits*/
+    background-color: @searchall
 }
 
-.CodeMirror-guttermarker {                                      
-    color: deeppink!important;
+.CodeMirror-searching.searching-current-match {                 /*search highlight current hit*/
+    background-color: @searchcurrent
 }
 
-.CodeMirror-guttermarker-subtle {                               
-    color: deeppink!important;
+.CodeMirror-foldmarker {                                        /*code-folding collapsed text placeholders*/
+    border-color: @foreground;
+    color: @background;
+    background-color: @foreground
 }
-*/
+
+.image-view,
+.not-editor {                                                   /*image view, from template css*/
+    background-color: @background
+}
+
+.view-pane .image-view {                                        /*image view, from template css*/
+    color: @foreground
+}
 
 /* 
 ========================================== 
-Codefarben 
+Code-Colors CSS here:
 ========================================== 
 */
+
 span.cm-atom {
     color: @foreground;
 }
@@ -198,11 +220,11 @@ span.cm-comment {
 }
 
 span.cm-error {
-    color: red;
+    color: @color-8;
 }
 
 span.cm-minus {
-    color: blue;
+    color: color-9;
 }
 
 span.cm-header {
@@ -210,12 +232,12 @@ span.cm-header {
 }
 
 span.cm-link {
-    color: red;
+    color: @color-8;
     text-decoration: none;
 }
 
 span.cm-rangeinfo {
-    color: blue;
+    color: @color-9;
 }
 
 span.cm-keyword {
