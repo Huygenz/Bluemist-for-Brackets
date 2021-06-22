@@ -15,6 +15,6 @@ Bluemist was made with simplicity in mind. If you want to tune colors of this th
 
 Also try [Brackets-Bluemist-UI](https://github.com/Huygenz/Brackets-Bluemist-UI) (WIP) to get a more unified UI together with this theme:
 
-![UnkemptArizonaalligatorlizard](https://user-images.githubusercontent.com/2411715/122937200-12330c80-d372-11eb-9b34-86d38d17838e.png)
+![EsteemedZanzibardaygecko](https://user-images.githubusercontent.com/2411715/122949847-46abc600-d37c-11eb-80d4-2f0ec2f2fc35.png)
 
 Code-Coloring inspired by [Easy Dark Theme](https://github.com/apezel/brackets-easy-dark/blob/master/theme.css) from [Arnaud Pezel](https://github.com/apezel).
