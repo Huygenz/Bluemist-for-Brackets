@@ -2,11 +2,13 @@
 ========================================== 
 Bluemist: A brackets theme v1.2
 ========================================== 
-
-https://github.com/Huygenz/brackets-bluemist
+v1.3:
+- active line number put to the left for readability
+- centered unfolded gutter-triangle correctly
+- cleanup
 
 Unnecessary CSS (we don't need it, it's nice without):
-.cm-matchhighlight { -matching selection- }
+.cm-matchhighlight { -matching live selection- }
 
 Referencefile: 
 https://github.com/adobe/brackets/blob/master/src/extensions/default/DarkTheme/main.less
@@ -35,15 +37,15 @@ All the colors here:
 @nonmatching:   #ff0000;                //nonmatching brackets
 @searchall:     #809136;                //search highlight all hits
 @searchcurrent: #b5fd07;                //search highlight current hit
-@color-1:       #FF3b6b;                //lightpink                           
-@color-2:       #4da4c0;                //lightblue                           
-@color-3:       #fff176;                //lightyellow                           
+@color-1:       #FF3b6b;                //pink                           
+@color-2:       #4da4c0;                //blue                           
+@color-3:       #fff176;                //yellow                           
 @color-4:       #31be6A;                //green                                           
-@color-5:       #ba68c9;                //lightviolet                           
-@color-6:       #fecF96;                //lightorange                           
+@color-5:       #ba68c9;                //violet                           
+@color-6:       #fecF96;                //orange                           
 @color-7:       #AEDA7C;                //lightgreen
-@color-8:       #fa0000;                //red
-@color-9:       #0303ff;                //blue
+@color-8:       #fa0000;                //signalred
+@color-9:       #0303ff;                //signalblue
 
 /* 
 ========================================== 
@@ -69,18 +71,19 @@ Editor CSS here:
 }
 
 .CodeMirror-cursor {                                            /*cursor1 normal mode*/
-    border-left: 2px solid @cursor1;
+    border-left: 2px solid @cursor1
 }
 
 .CodeMirror-overwrite .CodeMirror-cursor {                      /*cursor2 overwrite mode*/
     border-left: 0px;
-    border-bottom: 3px solid @cursor2;
+    border-bottom: 3px solid @cursor2
 }
 
 .CodeMirror-activeline .CodeMirror-linenumber {                 /*active line in gutter*/
     background: @foreground;
     color: @background;
-    font-weight: 900
+    font-weight: 900;
+    text-align: left
 }
 
 .CodeMirror-activeline-background {                             /*active line in editor*/
@@ -93,7 +96,8 @@ Editor CSS here:
 .CodeMirror-foldgutter-open:after 
 .CodeMirror-activeline 
 .CodeMirror.over-gutter {
-    color: @border
+    color: @border;
+    padding: 2px
 }
 
 .CodeMirror-foldgutter-folded:after {                           /*folded code triangle*/
